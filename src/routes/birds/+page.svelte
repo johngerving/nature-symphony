@@ -1,5 +1,5 @@
 <script lang="ts">
-  import BirdCardScratch from "$lib/components/BirdCardScratch.svelte";
+  import BirdCard from "$lib/components/BirdCard.svelte";
 
   const birds = [
     {
@@ -20,7 +20,7 @@
   
   <div class="card-grid">
     {#each birds as bird}
-      <BirdCardScratch {...bird} />
+      <BirdCard {...bird} />
     {/each}
   </div>
 </div>
