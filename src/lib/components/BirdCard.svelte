@@ -1,23 +1,57 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card";
-
   export let imageUrl: string;
   export let commonName: string;
   export let latinName: string;
 </script>
 
-<Card.Root class="w-[300px] overflow-hidden">
-  <Card.Content class="p-0">
-    <div class="relative w-full aspect-[3/2]">
-      <img 
-        src={imageUrl} 
-        alt={commonName}
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-    </div>
-  </Card.Content>
-  <Card.Header>
-    <Card.Title class="text-xl font-bold">{commonName}</Card.Title>
-    <Card.Description class="italic text-sm text-muted-foreground">{latinName}</Card.Description>
-  </Card.Header>
-</Card.Root> 
+<article class="card">
+  <header>
+    <h2>{commonName}</h2>
+    <p>{latinName}</p>
+  </header>
+
+  <img 
+    src={imageUrl} 
+    alt={commonName}
+  />
+</article>
+
+<style>
+  .card {
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    /* Grid layout for fixed image size */
+    display: grid;
+    grid-template-rows: auto 200px;
+  }
+
+  header {
+    padding: 1rem;
+    background: white;
+    z-index: 1;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.875rem;
+    font-style: italic;
+    color: #666;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style> 
