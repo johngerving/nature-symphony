@@ -21,7 +21,8 @@ export const actions: Actions = {
 
 		const { email, password } = form.data;
 
-		const { error } = await event.locals.supabase.auth.signInWithPassword({ email, password });
+		const { error } = await event.locals.supabase.auth.signUp({ email, password });
+
 		if (error) {
 			console.error(error);
 			redirect(303, '/auth/error');
