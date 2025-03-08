@@ -5,7 +5,7 @@
 	import { Navbar } from '$lib/components/ui/navbar';
 
 	let { data, children } = $props();
-	let { session, supabase } = $derived(data);
+	let { user, session, supabase } = $derived(data);
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
@@ -18,6 +18,6 @@
 	});
 </script>
 
-<Navbar/>
+<Navbar {user}/>
 
 {@render children()}
