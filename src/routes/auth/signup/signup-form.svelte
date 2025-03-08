@@ -25,16 +25,15 @@
 		<Form.Description>Enter your email.</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button>Submit</Form.Button>
 	<Form.Field {form} name="password">
 		<Form.Control>
 			{#snippet children({ props })}
 				<Form.Label>Password</Form.Label>
-				<Input {...props} bind:value={$formData.password} />
+				<Input type="password" {...props} bind:value={$formData.password} />
 			{/snippet}
 		</Form.Control>
 		<Form.Description>Enter your password.</Form.Description>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button>Log In</Form.Button>
+	<Form.Button>Sign Up</Form.Button>
 </form>
