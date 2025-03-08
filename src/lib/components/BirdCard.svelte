@@ -1,19 +1,50 @@
 <script lang="ts">
-  export let imageUrl: string;
-  export let commonName: string;
-  export let latinName: string;
+  type Props = {
+    imageUrl: string;
+    commonName: string;
+    latinName: string;
+    imageWidth?: number;
+    imageHeight?: number;
+    onError?: () => void;
+  };
+
+  let { 
+    imageUrl,
+    commonName,
+    latinName,
+    imageWidth,
+    imageHeight,
+    onError 
+  }: Props = $props();
+
+  let hasError = $state(false);
+
+  function handleError() {
+    hasError = true;
+    onError?.();
+  }
 </script>
 
-<article class="card">
+<article class="card" class:error={hasError}>
   <header>
     <h2>{commonName}</h2>
     <p>{latinName}</p>
   </header>
 
-  <img 
-    src={imageUrl} 
-    alt={commonName}
-  />
+  {#if hasError}
+    <div class="error-placeholder">
+      <span>Failed to load image</span>
+    </div>
+  {:else}
+    <img 
+      src={imageUrl} 
+      alt={commonName}
+      width={imageWidth}
+      height={imageHeight}
+      loading="lazy"
+      on:error={handleError}
+    />
+  {/if}
 </article>
 
 <style>
@@ -53,5 +84,20 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .error-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .card.error {
+    opacity: 0.9;
   }
 </style> 
