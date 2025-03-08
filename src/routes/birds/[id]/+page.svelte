@@ -21,7 +21,7 @@
     <!-- iNat obs site -->
     <Card.Root>
     <Card.Header>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>Link to the iNatural site</Card.Title>
     <Card.Description>Card Description</Card.Description>
     </Card.Header>
     <Card.Content>
@@ -37,7 +37,7 @@
     <!-- Map location -->
     <Card.Root>
     <Card.Header>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>Location</Card.Title>
     <Card.Description>Card Description</Card.Description>
     </Card.Header>
     <Card.Content>
@@ -53,7 +53,7 @@
     <!-- research -->
     <Card.Root>
     <Card.Header>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>Digital Commons</Card.Title>
     <Card.Description>Card Description</Card.Description>
     </Card.Header>
     <Card.Content>
@@ -65,94 +65,11 @@
     </Card.Root>   
 </div>
 
-<div class="iNat">
+<div class="style">
 </div>
-<div class="map">
-</div>
-<div class="research">
-</div>  
-<style>
-    .iNat {
-      width: 300px;
-      border-radius: 8px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      
-      /* Grid layout for fixed image size */
-      display: grid;
-      grid-template-rows: auto 350px;
-    }
-  
-    header {
-      padding: 1.5rem;
-      background: white;
-      z-index: 1;
-    }
-  
-    h2 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-  
-    p {
-      margin: 0.5rem 0 0 0;
-      font-size: 1rem;
-      font-style: italic;
-      color: #666;
-    }
-  
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  </style> 
 
 <style>
-    .map {
-      width: 300px;
-      border-radius: 8px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      
-      /* Grid layout for fixed image size */
-      display: grid;
-      grid-template-rows: auto 350px;
-    }
-  
-    header {
-      padding: 1.5rem;
-      background: white;
-      z-index: 1;
-    }
-  
-    h2 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-  
-    p {
-      margin: 0.5rem 0 0 0;
-      font-size: 1rem;
-      font-style: italic;
-      color: #666;
-    }
-  
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  </style> 
- 
- <style>
-    .research {
+    .style {
       width: 300px;
       border-radius: 8px;
       overflow: hidden;
