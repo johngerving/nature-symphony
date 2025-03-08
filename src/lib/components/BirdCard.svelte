@@ -26,24 +26,24 @@
     
     /* Grid layout for fixed image size */
     display: grid;
-    grid-template-rows: auto 200px;
+    grid-template-rows: auto 350px;
   }
 
   header {
-    padding: 1rem;
+    padding: 1.5rem;
     background: white;
     z-index: 1;
   }
 
   h2 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 
   p {
     margin: 0.5rem 0 0 0;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-style: italic;
     color: #666;
   }
