@@ -19,7 +19,7 @@
     <!--soundbytes in this block-->
 <div>
     <!-- iNat obs site -->
-    <Card.Root>
+    <Card.Root class = "style">
     <Card.Header>
     <Card.Title>Link to the iNatural site</Card.Title>
     <Card.Description>Card Description</Card.Description>
@@ -35,7 +35,7 @@
 
 <div>
     <!-- Map location -->
-    <Card.Root>
+    <Card.Root class = "style">
     <Card.Header>
     <Card.Title>Location</Card.Title>
     <Card.Description>Card Description</Card.Description>
@@ -51,7 +51,7 @@
 
 <div>
     <!-- research -->
-    <Card.Root>
+    <Card.Root class = "style">
     <Card.Header>
     <Card.Title>Digital Commons</Card.Title>
     <Card.Description>Card Description</Card.Description>
@@ -66,6 +66,7 @@
 </div>
 
 <div class="style">
+    
 </div>
 
 <style>
