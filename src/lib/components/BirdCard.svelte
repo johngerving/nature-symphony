@@ -1,7 +1,16 @@
 <script lang="ts">
-  export let imageUrl: string;
-  export let commonName: string;
-  export let latinName: string;
+  export let imageUrl: string | undefined; 
+  export let commonName: string| undefined;
+  export let latinName: string| undefined;
+  if (!imageUrl) {
+    imageUrl="image url is currently EMPTY"
+  }
+  if (!commonName) {
+    commonName="commonName is currently EMPTY"
+  }
+  if (!latinName) {
+    latinName="latinName is currently EMPTY"
+  }
 </script>
 
 <article class="card">
