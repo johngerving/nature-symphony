@@ -15,9 +15,14 @@
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
     </div>
-    <div class="flex items-center space-x-4">
-        {#if user}
-            <Button href="/auth/logout">Logout</Button>
+            <div class="flex items-center space-x-4">
+                {#if user}
+                <form
+                method="POST"
+                action="/auth/logout"
+                >
+                    <Button type="submit">Log Out</Button>
+                </form>
             <Avatar.Root>
                 <Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
                 <Avatar.Fallback>CN</Avatar.Fallback>
