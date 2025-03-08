@@ -1,0 +1,1 @@
+<p> Be sure to verify your email! You will be able to properly log in afterward. </p>
