@@ -12,9 +12,8 @@
 <nav class="navbar text-primary-background flex items-center justify-between bg-primary-foreground p-4">
 	<img src="/Icon_50.png" alt="logo" />
 	<div>
-		<a href="/">Home</a>
-        <a href="/gallery">Gallery</a>
         <a href="/forest">Forest</a>
+        <a href="/gallery">Gallery</a>
 		<a href="/about">About</a>
 	</div>
 	<div class="flex items-center space-x-4">
