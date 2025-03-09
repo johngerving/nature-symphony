@@ -77,3 +77,6 @@ We welcome contributions!
 
 # Contact
 For questions or issues regarding this project, please open an issue on our GitHub repository.
+
+#AI Use
+This project included an open conversation with claude-3.5-sonnet through the cursor ai IDE. Claude helped with utilizing Svelte 5, optimizing file structure and SSR, error identification, general troubleshooting, syntax lookup, as well as more complex tasks like: paring down complex code, overcomplicating simple code, data format control, and reminding us what should go into a standard README.
