@@ -9,13 +9,20 @@ const BACKGROUND_IMAGES = [
   '/redwoods2.jpg'
 ];
 
-// Constants for bird card dimensions and grid layout
 const BIRDS_PER_SLIDE = 4;
-const GRID_COLUMNS = 2;
-const GRID_ROWS = 2;
-const CARD_WIDTH = 200;  // Smaller size for forest context
-const CARD_HEIGHT = 250;
-const GRID_GAP = 20;
+
+// Define natural positions for birds in the forest scene
+// Using percentages to make it responsive
+const BIRD_POSITIONS = [
+  // Top left branch area
+  { top: '25%', left: '20%' },
+  // Upper right perch
+  { top: '30%', left: '75%' },
+  // Middle left trunk
+  { top: '45%', left: '35%' },
+  // Lower right branch
+  { top: '60%', left: '80%' }
+];
 
 interface Bird {
   position: {
@@ -29,31 +36,6 @@ interface ForestSlide {
   imageUrl: string;
   caption: string;
   birds: Bird[];
-}
-
-function calculateGridPositions(containerWidth: number, containerHeight: number): Array<{ top: string, left: string }> {
-  const gridWidth = (GRID_COLUMNS * CARD_WIDTH) + ((GRID_COLUMNS - 1) * GRID_GAP);
-  const gridHeight = (GRID_ROWS * CARD_HEIGHT) + ((GRID_ROWS - 1) * GRID_GAP);
-  
-  // Calculate starting position to center the grid
-  const startX = (containerWidth - gridWidth) / 2;
-  const startY = (containerHeight - gridHeight) / 2;
-  
-  const positions = [];
-  
-  for (let row = 0; row < GRID_ROWS; row++) {
-    for (let col = 0; col < GRID_COLUMNS; col++) {
-      const left = startX + (col * (CARD_WIDTH + GRID_GAP));
-      const top = startY + (row * (CARD_HEIGHT + GRID_GAP));
-      
-      positions.push({
-        left: `${(left / containerWidth) * 100}%`,
-        top: `${(top / containerHeight) * 100}%`
-      });
-    }
-  }
-  
-  return positions;
 }
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
@@ -90,11 +72,8 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
       const startIdx = index * BIRDS_PER_SLIDE;
       const slideObservations = qualityObservations.slice(startIdx, startIdx + BIRDS_PER_SLIDE);
       
-      // Calculate grid positions for this slide
-      const positions = calculateGridPositions(1200, 800); // Standard container size
-      
       const birds = slideObservations.map((obs, birdIndex) => ({
-        position: positions[birdIndex],
+        position: BIRD_POSITIONS[birdIndex],
         observation: obs
       }));
 
