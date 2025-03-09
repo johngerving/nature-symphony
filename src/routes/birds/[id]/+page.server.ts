@@ -6,21 +6,28 @@ import type { Observation } from '$lib/types/inaturalist';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const id = params.id;
-
-	let observation: Observation;
+	let observation: Observation | null = null;
 
 	try {
 		observation = await getObservationById(id);
+		if (!observation) {
+			throw error(404, 'Observation not found');
+		}
 	} catch (e) {
-		console.log(e);
-		error(404, {
-			message: 'Not found'
-		});
+		console.error('Error fetching observation:', e);
+		throw error(500, 'Failed to fetch observation');
 	}
 
-	console.log(observation);
+	console.log('Fetched observation:', observation);
 
-	const articles = await getArticlesByKeyword('Parus major');
+	let articles = [];
+
+	try {
+		articles = await getArticlesByKeyword('Parus major');
+	} catch (e) {
+		console.error('Error fetching articles:', e);
+		// This won't throw a 500 because we don't want the whole page to fail if articles fail.
+	}
 
 	return {
 		observation,

@@ -2,6 +2,7 @@
 	import * as Card from '$lib/components/ui/card';
     const name = "bird name";
     const description = "bird description";
+    const audioSrc = "/birds-chirping-75156.mp3";
 </script>
 
 <!-- stored bird stuff tried em, tried px,  width="400em" height="400em"-->
@@ -18,7 +19,12 @@
 </div>
 
 <!--soundbytes in this block-->
-<div></div>
+<div class="audio-player">
+    <audio controls>
+        <source src={audioSrc} type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
 
 <!-- contentCards obs site -->
 <div class="cardList">
@@ -66,5 +72,10 @@
 	}
     .contentCards:last-child {
         margin-right: 0;
+    }
+
+    .audio-player {
+        margin: 0 auto 2rem auto; /* Center the audio player and add some space below it */
+        text-align: center;
     }
 </style>

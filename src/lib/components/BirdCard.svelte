@@ -1,26 +1,25 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import type { Observation } from '$lib/types/inaturalist';
-
-	type Props = {
-		imageUrl: string;
-		commonName: string;
-		latinName: string;
-		imageWidth?: number;
-		imageHeight?: number;
-		onError?: () => void;
-	};
 
 	let { observation }: { observation: Observation } = $props();
 	let { photos, taxon } = $derived(observation);
 
-	let hasError = $state(false);
+	let hasError = false;
+
+	const dispatch = createEventDispatcher();
 
 	function handleError() {
 		hasError = true;
 	}
+
+	function handleClick() {
+		dispatch('click', { id: observation.id });
+	}
 </script>
 
-<article class="card" class:error={hasError}>
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<article class="card" class:error={hasError} onclick={handleClick}>
 	<header>
 		<h2>{taxon?.preferredCommonName}</h2>
 		<p>{taxon?.iconicTaxonName}</p>
@@ -53,6 +52,7 @@
 		/* Grid layout for fixed image size */
 		display: grid;
 		grid-template-rows: auto 350px;
+		cursor: pointer; /* Add cursor pointer to indicate clickable */
 	}
 
 	header {

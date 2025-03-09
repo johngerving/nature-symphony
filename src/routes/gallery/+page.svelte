@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BirdCard from '$lib/components/BirdCard.svelte';
 	import { Pagination } from '$lib/components/ui/pagination/index.js';
+	import { goto } from '$app/navigation';
 
 	let { data } = $props();
 	let { streamed, page } = $derived(data);
@@ -11,6 +12,11 @@
 		}
 		return 1;
 	});
+
+	function handleCardClick(event) {
+		const { id } = event.detail;
+		goto(`/birds/${id}`);
+	}
 </script>
 
 <div class="container">
@@ -28,7 +34,7 @@
 			/>
 
 			{#each observations.observations as observation (observation.id)}
-				<BirdCard {observation} />
+				<BirdCard {observation} on:click={handleCardClick} />
 			{/each}
 
 			<Pagination
