@@ -1,29 +1,59 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
-    const name = "bird name";
-    const description = "bird description";
+	import * as Carousel from "$lib/components/ui/carousel/index.js";
+	const name = "Bird Name";
+	const description = "Bird description, its fuzzy, and tall, and has a long neck. Furthermore, it has a long tail and is very colorful. It is a bird.";
     const audioSrc = "/birds-chirping-75156.mp3";
 </script>
 
 <!-- stored bird stuff tried em, tried px,  width="400em" height="400em"-->
-<div class="landingContent">
-	<img
+<div class="landingContainer">
+	<div class="birdCarousel">
+		<Carousel.Root class="flex flex-column items-center">
+			<Carousel.Content>
+				<Carousel.Item>
+					<img
+					src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg"
+					class="birdimg"
+					alt="bird"
+				/>
+				</Carousel.Item>
+				<Carousel.Item>
+					<img
+					src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg"
+					class="birdimg"
+					alt="bird"
+				/>
+				</Carousel.Item>
+				<Carousel.Item>
+					<img
+					src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg"
+					class="birdimg"
+					alt="bird"
+				/>
+				</Carousel.Item>
+			</Carousel.Content>
+			<Carousel.Previous />
+			<Carousel.Next />
+		</Carousel.Root>
+	</div>
+	<!-- <img
 		src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg"
 		class="birdimg"
 		alt="bird"
-	/>
-	<div class="landingText">
-		<h1>{name}</h1>
-		<p>{description}</p>
+	/> -->
+	<div class="landingContent">
+		<div>
+			<h1>{name}</h1>
+			<p>{description}</p>
+		</div>
+		<div class="audio">
+			<audio controls>
+				<source src={audioSrc} type="audio/mpeg">
+				Your browser does not support the audio element.
+			</audio>
+		</div>
 	</div>
-</div>
-
-<!--soundbytes in this block-->
-<div class="audio-player">
-    <audio controls>
-        <source src={audioSrc} type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 </div>
 
 <!-- contentCards obs site -->
@@ -43,23 +73,47 @@
 </div>
 
 <style>
-	.landingContent {
+	.landingContainer {
 		display: flex;
 		flex-direction: row;
+		margin-bottom: 100px;
 	}
-    .landingText {
+    .landingContent {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
         padding: 0px 16px;
+		flex-grow: 1;
+		flex-shrink: 1;
     }
-
+	.landingContent h1 {
+		font-weight: 800;
+		font-size: 2rem;
+	}
+	.landingContent .audio {
+		width: 100%;
+		height: 100px;
+		border-radius: var(--radius);
+		background: rgb(249, 250, 251);
+	}
+	
+	.birdimg {
+		width: 400px;
+		height: 300px;
+		border-radius: var(--radius);
+		object-fit: contain;
+	}
+	.birdCarousel {
+		width: 400px;
+		margin-right: 48px;
+		margin-left: 72px;
+		flex-grow: 2;
+        flex-shrink: 0;
+	}
     .cardList {
         display: flex;
         flex-direction: row;
         justify-content: center;
-    }
-    .birdimg {
-        width: 300px;
-        height: 300px;
-        display: inline;
     }
 	.contentCards {
         background: hsl(var(--card) / var(--tw-bg-opacity));
@@ -72,10 +126,5 @@
 	}
     .contentCards:last-child {
         margin-right: 0;
-    }
-
-    .audio-player {
-        margin: 0 auto 2rem auto; /* Center the audio player and add some space below it */
-        text-align: center;
     }
 </style>
