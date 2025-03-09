@@ -8,9 +8,6 @@
 </script>
 
 <header>
-	<nav>
-		<a href="/">Home</a>
-	</nav>
 	<form
 		method="POST"
 		action="/auth/logout"
