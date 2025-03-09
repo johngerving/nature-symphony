@@ -3,6 +3,7 @@
     import { invalidate } from '$app/navigation';
     import { onMount } from 'svelte';
     import { Navbar } from '$lib/components/ui/navbar';
+    import NavigationLinks from './NavigationLinks.svelte';
     import { SearchbarResults } from '$lib/components/searchbarResults';
 
     let { data, children } = $props();
@@ -19,7 +20,8 @@
     });
 </script>
 
-<Navbar {user}/>
+<Navbar {user} />
+<NavigationLinks />
 
 <SearchbarResults/>
 
