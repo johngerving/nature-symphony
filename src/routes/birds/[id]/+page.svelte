@@ -17,9 +17,9 @@
 
     const name = observation?.taxon?.preferredCommonName || "Unknown Bird";
     const description = observation?.taxon?.iconicTaxonName || "No description available";
-    const audioSrc = observation?.sounds?.length > 0
-        ? observation.sounds[0].url
-        : null; // Set to null if no audio is available
+    let audioUrls = observation?.sounds
+        ?.slice(0, 3) // Get only the first 3 sounds
+        ?.map(sound => sound.url) || []; // Set to an empty array if no audio is available
 </script>
 
 {#if observation}
@@ -50,13 +50,15 @@
         <p>{description}</p>
     </div>
     <div class="audio">
-        {#if audioSrc}
-            <audio controls>
-                <source src="{audioSrc}" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+        {#if audioUrls.length > 0}
+            {#each audioUrls as audioUrl}
+                <audio controls>
+                    <source src="{audioUrl}" type="audio/mpeg">
+                    Your browser does not support the audio element!.
+                </audio>
+            {/each}
         {:else}
-            <p>Sorry, no audio file available</p>
+            <p>Sorry, no audio files found.</p>
         {/if}
     </div>
 </div>
