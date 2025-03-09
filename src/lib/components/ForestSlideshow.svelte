@@ -2,7 +2,11 @@
   import BirdOverlay from "./BirdOverlay.svelte";
   import type { ForestSlideshowProps } from '$lib/types/forest';
 
-  let { slides } = $props();
+  let { 
+    slides,
+    birdCardWidth = '200px',
+    birdCardImageHeight = '220px'
+  } = $props();
   let currentIndex = $state(0);
 
   // Derive current slide data
@@ -29,7 +33,11 @@
       class="w-full h-full object-cover"
     />
     
-    <BirdOverlay birds={currentSlide.birds} />
+    <BirdOverlay 
+      birds={currentSlide.birds}
+      cardWidth={birdCardWidth}
+      cardImageHeight={birdCardImageHeight}
+    />
     
     <div class="image-caption">
       {currentSlide.caption}

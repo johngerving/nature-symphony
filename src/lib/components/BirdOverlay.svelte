@@ -2,7 +2,11 @@
     import BirdCard from "./BirdCard.svelte";
     import type { Bird } from '$lib/types/forest';
     
-    let { birds } = $props();
+    let { 
+      birds,
+      cardWidth = '200px',
+      cardImageHeight = '220px'
+    } = $props();
 </script>
   
 <div class="absolute inset-0 pointer-events-none">
@@ -11,7 +15,11 @@
       class="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
       style="top: {bird.position?.top}; left: {bird.position?.left}"
     >
-      <BirdCard {...bird} />
+      <BirdCard 
+        {...bird} 
+        width={cardWidth}
+        imageHeight={cardImageHeight}
+      />
     </div>
   {/each}
 </div>
