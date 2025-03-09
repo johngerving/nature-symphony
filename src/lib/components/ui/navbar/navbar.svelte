@@ -12,6 +12,8 @@
 <nav class="text-primary-background flex items-center justify-between bg-primary-foreground p-4">
 	<div>
 		<a href="/">Home</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/forest">Forest</a>
 		<a href="/about">About</a>
 	</div>
 	<div class="flex items-center space-x-4">
