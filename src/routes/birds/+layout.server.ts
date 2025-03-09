@@ -6,16 +6,21 @@ const placeID = '1247';
 export const load: LayoutServerLoad = async ({ url }) => {
 	const page = url.searchParams.get('page');
 
-	let iNaturalistQueryString = `?place_id=${placeID}&order=desc&order_by=created_at`;
+	const iNaturalistSearchParams = new URLSearchParams();
+	iNaturalistSearchParams.set('place_id', placeID);
+	iNaturalistSearchParams.set('order', 'desc');
+	iNaturalistSearchParams.set('order_by', 'created_at');
+
 	if (page != null) {
-		iNaturalistQueryString += `&page=${page}`;
+		iNaturalistSearchParams.set('page', page);
 	}
 
 	// Only get birds
-	iNaturalistQueryString += `&iconic_taxa=Aves`;
+	iNaturalistSearchParams.set('iconic_taxa', 'Aves');
 
-	const observationsPromise = getObservations(iNaturalistQueryString);
+	const observationsPromise = getObservations(iNaturalistSearchParams);
 	return {
+		page,
 		observationsPromise
 	};
 };

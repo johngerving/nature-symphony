@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Observation } from '$lib/types/observation';
+	import type { Observation } from '$lib/types/inaturalist';
 
 	type Props = {
 		imageUrl: string;
