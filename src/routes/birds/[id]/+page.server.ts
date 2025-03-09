@@ -18,7 +18,8 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(500, 'Failed to fetch observation');
 	}
 
-	console.log('Fetched observation:', observation);
+	console.log("Server: Fetching observation for ID:", params.id);
+	console.log("Server: Observation Data:", observation);
 
 	let articles = [];
 
