@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { Navbar } from '$lib/components/ui/navbar';
 
 	let { data, children } = $props();
-	let { session, supabase } = $derived(data);
+	let { user, session, supabase } = $derived(data);
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
@@ -16,5 +17,7 @@
 		return () => data.subscription.unsubscribe();
 	});
 </script>
+
+<Navbar {user}/>
 
 {@render children()}
