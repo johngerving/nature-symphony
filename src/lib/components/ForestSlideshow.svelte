@@ -47,7 +47,7 @@
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 items-center">
     <button 
       class="nav-button"
-      on:click={() => changeSlide('prev')}
+      onclick={() => changeSlide('prev')}
     >←</button>
     
     <span class="slide-counter">
@@ -56,7 +56,7 @@
     
     <button 
       class="nav-button"
-      on:click={() => changeSlide('next')}
+      onclick={() => changeSlide('next')}
     >→</button>
   </div>
 </div> 

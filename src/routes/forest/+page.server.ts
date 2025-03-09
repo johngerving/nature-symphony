@@ -15,13 +15,13 @@ const BIRDS_PER_SLIDE = 4;
 // Using percentages to make it responsive
 const BIRD_POSITIONS = [
   // Top left branch area
-  { top: '25%', left: '20%' },
+  { top: '30%', left: '10%' },
   // Upper right perch
-  { top: '30%', left: '75%' },
+  { top: '40%', left: '65%' },
   // Middle left trunk
-  { top: '45%', left: '35%' },
+  { top: '55%', left: '35%' },
   // Lower right branch
-  { top: '60%', left: '80%' }
+  { top: '60%', left: '85%' }
 ];
 
 interface Bird {

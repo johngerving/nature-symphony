@@ -12,8 +12,9 @@
 <nav class="flex justify-between items-center p-4 bg-primary-foreground text-primary-background">
     <div>
         <a href="/">Home</a>
+        <a href="/forest">Forest</a>
+        <a href="/gallery">Gallery</a>  
         <a href="/about">About</a>
-        <a href="/contact">Contact</a>
     </div>
             <div class="flex items-center space-x-4">
                 {#if user}
@@ -33,3 +34,20 @@
         {/if}
     </div>
 </nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f0f0f0;
+    }
+
+    nav a {
+        margin-right: 1.5rem;
+        text-decoration: none;
+        color: #333;
+    }
+    
+</style>

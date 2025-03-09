@@ -21,7 +21,6 @@
 </script>
 
 <div class="container">
-	<h1>Beautiful Birds</h1>
 
 	<SearchbarResults {q} />
 

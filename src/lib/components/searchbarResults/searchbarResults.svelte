@@ -100,7 +100,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 60px;
+		padding: 25px;
 		width: 70%;
 		margin-left: auto;
 		margin-right: auto;
