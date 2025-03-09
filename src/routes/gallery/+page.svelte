@@ -2,9 +2,10 @@
 	import BirdCard from '$lib/components/BirdCard.svelte';
 	import { Pagination } from '$lib/components/ui/pagination/index.js';
 	import { goto } from '$app/navigation';
+	import { SearchbarResults } from '$lib/components/searchbarResults';
 
 	let { data } = $props();
-	let { streamed, page } = $derived(data);
+	let { streamed, page, q } = $derived(data);
 
 	let pageValue = $derived.by(() => {
 		if (!isNaN(parseFloat(page))) {
@@ -22,12 +23,14 @@
 <div class="container">
 	<h1>Beautiful Birds</h1>
 
+	<SearchbarResults {q} />
+
 	<div class="card-grid">
 		{#await streamed.observations}
 			<p>Loading...</p>
 		{:then observations}
 			<Pagination
-				page={pageValue}
+				pageNum={pageValue}
 				totalResults={observations.totalResults}
 				perPage={observations.perPage}
 				class="col-span-full"
@@ -38,7 +41,7 @@
 			{/each}
 
 			<Pagination
-				page={pageValue}
+				pageNum={pageValue}
 				totalResults={observations.totalResults}
 				perPage={observations.perPage}
 				class="col-span-full"
