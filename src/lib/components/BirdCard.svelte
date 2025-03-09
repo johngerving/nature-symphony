@@ -1,34 +1,33 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import type { Observation } from '$lib/types/inaturalist';
 
-	let { 
+	let {
 		observation,
 		width = '300px',
 		imageHeight = '350px',
-		class: className = '' 
+		class: className = ''
+	}: {
+		observation: Observation;
+		width: string;
+		imageHeight: string;
+		class: string;
 	} = $props();
-	
+
 	let { photos, taxon } = $derived(observation);
 	let hasError = false;
-
-	const dispatch = createEventDispatcher();
 
 	function handleError() {
 		hasError = true;
 	}
-
-	function handleClick() {
-		dispatch('click', { id: observation.id });
-	}
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
-<article 
-	class="card {className}" 
-	class:error={hasError} 
-	onclick={handleClick}
+<a
+	class="card {className}"
+	class:error={hasError}
 	style="--card-width: {width}; --image-height: {imageHeight}"
+	href={`/birds/${observation.id}`}
+	data-sveltekit-preload-data="hover"
 >
 	<header>
 		<h2>{taxon?.preferredCommonName}</h2>
@@ -46,7 +45,7 @@
 			onerror={handleError}
 		/>
 	{/if}
-</article>
+</a>
 
 <style>
 	.card {
