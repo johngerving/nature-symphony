@@ -1,12 +1,11 @@
 import type { Observation, ObservationsQuery, Photo, Sound, Taxon } from '$lib/types/inaturalist';
-import { error } from '@sveltejs/kit';
 
 export const getObservations = async (
 	searchParams: URLSearchParams
 ): Promise<ObservationsQuery> => {
 	const res = await fetch(`https://api.inaturalist.org/v1/observations?${searchParams}`);
 	if (!res.ok) {
-		error(res.status, 'Bad request');
+		throw new Error(`Request status: ${res.status}`);
 	}
 
 	const json = await res.json();
@@ -45,7 +44,7 @@ export const getObservations = async (
 
 	return {
 		observations,
-		totalResults: json['total_results'],
+		totalResults: Math.min(10000, json['total_results']),
 		perPage: json['per_page']
 	};
 };

@@ -18,9 +18,12 @@ export const load: LayoutServerLoad = async ({ url }) => {
 	// Only get birds
 	iNaturalistSearchParams.set('iconic_taxa', 'Aves');
 
-	const observationsPromise = getObservations(iNaturalistSearchParams);
+	const observations = getObservations(iNaturalistSearchParams);
+	observations.catch(() => {});
 	return {
 		page,
-		observationsPromise
+		streamed: {
+			observations: observations
+		}
 	};
 };
