@@ -3,40 +3,43 @@
 	import { Pagination } from '$lib/components/ui/pagination/index.js';
 
 	let { data } = $props();
-	let { observationsPromise, page } = $derived(data);
+	let { streamed, page } = $derived(data);
+
+	let pageValue = $derived.by(() => {
+		if (!isNaN(parseFloat(page))) {
+			return parseFloat(page);
+		}
+		return 1;
+	});
 </script>
 
 <div class="container">
 	<h1>Beautiful Birds</h1>
 
 	<div class="card-grid">
-		{#await observationsPromise}
+		{#await streamed.observations}
 			<p>Loading...</p>
-		{:then observationsQuery}
+		{:then observations}
 			<Pagination
-				page={parseInt(page)}
-				totalResults={observationsQuery.totalResults}
-				perPage={observationsQuery.perPage}
+				page={pageValue}
+				totalResults={observations.totalResults}
+				perPage={observations.perPage}
 				class="col-span-full"
 			/>
 
-			{#each observationsQuery.observations as observation (observation.id)}
+			{#each observations.observations as observation (observation.id)}
 				<BirdCard {observation} />
 			{/each}
 
 			<Pagination
-				page={parseInt(page)}
-				totalResults={observationsQuery.totalResults}
-				perPage={observationsQuery.perPage}
+				page={pageValue}
+				totalResults={observations.totalResults}
+				perPage={observations.perPage}
 				class="col-span-full"
 			/>
 		{:catch error}
-			<p class="text-red-500">{error}</p>
+			<p class="text-red-500">{error.message}</p>
 		{/await}
-	</div>
-
-	<div class="flex justify-center bg-blue-300 p-4">
-		{#await observationsPromise}{/await}
 	</div>
 </div>
 
