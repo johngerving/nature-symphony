@@ -20,11 +20,12 @@ Broadly, to further enchance the play experience of learning.
 ### From this outline, we narrowed our project to target curious, would be birdwatchers.
 
 ##### We started with this rough sketch.
-![[outline1.jpg]]
+![alt text](https://github.com/johngerving/nature-symphony/blob/main/outline1.jpg "Whiteboard Outline 1") 
+
 
 #### Which evolved into this more polished, smoother 'one-ish' page format.
-![[outline2.jpg]]
-![[forest.jpg]]
+![alt text](https://github.com/johngerving/nature-symphony/blob/main/outline2.jpg "Whiteboard Outline 2") 
+![alt text](https://github.com/johngerving/nature-symphony/blob/main/forest.jpg "Bird's eye view sketch")
 
 With a goal of being able to browse local Humboldt bird species and their calls, recorded in Humboldt and documented on iNaturalist. For the curious, clicking on a bird in the gallery or on the 'bird's eye view' forest pages opens to a more detailed profile of any given bird!
 
