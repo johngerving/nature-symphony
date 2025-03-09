@@ -1,3 +1,6 @@
+<script>
+</script>
+
 <style>
   .nav-container {
     position: absolute;
