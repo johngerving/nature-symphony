@@ -767,7 +767,7 @@
   resolved "https://registry.yarnpkg.com/@img/sharp-win32-x64/-/sharp-win32-x64-0.33.5.tgz#56f00962ff0c4e0eb93d34a047d29fa995e3e342"
   integrity sha512-MpY/o8/8kj+EcnxwvrP4aTJSWw/aZ7JIGR4aBeZkZw5B7/Jn+tY9/VNwtcoGmdT7GfggGIU4kygOMSbYnOrAbg==
 
-"@internationalized/date@^3.5.6":
+"@internationalized/date@^3.5.6", "@internationalized/date@^3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.7.0.tgz#23a4956308ee108e308517a7137c69ab8f5f2ad9"
   integrity sha512-VJ5WS3fcVx0bejE/YHfbDKR/yawZgKqn/if+oEeLqNwBtPzVB06olkfcnojTmEMX+gTpH+FlQ69SHNitJ8/erQ==
@@ -3469,6 +3469,14 @@ validator@^13.12.0, validator@^13.9.0:
   version "13.12.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.12.0.tgz#7d78e76ba85504da3fee4fd1922b385914d4b35f"
   integrity sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==
+
+vaul-svelte@^1.0.0-next.6:
+  version "1.0.0-next.6"
+  resolved "https://registry.yarnpkg.com/vaul-svelte/-/vaul-svelte-1.0.0-next.6.tgz#a3dd3a69f87d2ab9afb2b5f69726c60127b27216"
+  integrity sha512-leEKb9Qoj7JOrC0wLnqoczLhHZcwo7UHKBJ7SWBRhdFn0o+x9W1XioUK2OeiZHb5Bp7LyYKtUUjVWO3uJULUCw==
+  dependencies:
+    runed "^0.23.2"
+    svelte-toolbelt "^0.7.1"
 
 vite@^6.0.0:
   version "6.2.1"
