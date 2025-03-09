@@ -1,8 +1,9 @@
 <script lang="ts">
 	import BirdCard from '$lib/components/BirdCard.svelte';
+	import { Pagination } from '$lib/components/ui/pagination/index.js';
 
 	let { data } = $props();
-	let { observationsPromise } = $derived(data);
+	let { observationsPromise, page } = $derived(data);
 </script>
 
 <div class="container">
@@ -11,13 +12,31 @@
 	<div class="card-grid">
 		{#await observationsPromise}
 			<p>Loading...</p>
-		{:then observations}
-			{#each observations as observation}
+		{:then observationsQuery}
+			<Pagination
+				page={parseInt(page)}
+				totalResults={observationsQuery.totalResults}
+				perPage={observationsQuery.perPage}
+				class="col-span-full"
+			/>
+
+			{#each observationsQuery.observations as observation (observation.id)}
 				<BirdCard {observation} />
 			{/each}
+
+			<Pagination
+				page={parseInt(page)}
+				totalResults={observationsQuery.totalResults}
+				perPage={observationsQuery.perPage}
+				class="col-span-full"
+			/>
 		{:catch error}
 			<p class="text-red-500">{error}</p>
 		{/await}
+	</div>
+
+	<div class="flex justify-center bg-blue-300 p-4">
+		{#await observationsPromise}{/await}
 	</div>
 </div>
 

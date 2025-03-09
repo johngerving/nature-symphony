@@ -1,3 +1,8 @@
+export interface ObservationsQuery {
+	observations: Observation[];
+	totalResults: number;
+	perPage: number;
+}
 export interface Observation {
 	id: number | null;
 	createdAt: string | null;

@@ -2,7 +2,7 @@ import { getArticlesByKeyword } from '$lib/server/digitalcommons';
 import { getObservationById } from '$lib/server/inaturalist';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { Observation } from '$lib/types/observation';
+import type { Observation } from '$lib/types/inaturalist';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const id = params.id;
