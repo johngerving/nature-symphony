@@ -69,6 +69,7 @@
         width: 100px;
         height: 100px;
         margin-bottom: 10px;
+        object-fit: cover;
     }
     .team-card h3 {
         margin: 10px 0 5px;
