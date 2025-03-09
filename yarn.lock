@@ -884,6 +884,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iconify-json/material-symbols@npm:^1.2.15":
+  version: 1.2.15
+  resolution: "@iconify-json/material-symbols@npm:1.2.15"
+  dependencies:
+    "@iconify/types": "npm:*"
+  checksum: 10c0/f74e5c89999b3d2dfaeb13828e35a72f63170698222c97de473391e4a1c32f346569d600442e845dc4f31f8dfad8b1b4f3559e181f6cb1af433858012c895518
+  languageName: node
+  linkType: hard
+
 "@iconify-json/mdi@npm:^1.2.3":
   version: 1.2.3
   resolution: "@iconify-json/mdi@npm:1.2.3"
@@ -3939,6 +3948,7 @@ __metadata:
   dependencies:
     "@eslint/compat": "npm:^1.2.5"
     "@eslint/js": "npm:^9.18.0"
+    "@iconify-json/material-symbols": "npm:^1.2.15"
     "@iconify-json/mdi": "npm:^1.2.3"
     "@supabase/ssr": "npm:^0.5.2"
     "@supabase/supabase-js": "npm:^2.49.1"

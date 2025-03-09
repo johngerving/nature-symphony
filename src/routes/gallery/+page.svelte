@@ -3,7 +3,7 @@
 	import { Pagination } from '$lib/components/ui/pagination/index.js';
 
 	let { data } = $props();
-	let { streamed, page } = $derived(data);
+	let { streamed, page, favorites, user } = $derived(data);
 
 	let pageValue = $derived.by(() => {
 		if (!isNaN(parseFloat(page))) {
@@ -28,7 +28,11 @@
 			/>
 
 			{#each observations.observations as observation (observation.id)}
-				<BirdCard {observation} />
+				<BirdCard
+					{observation}
+					showFavorite={!!user}
+					favorite={favorites.some((el) => el.id == observation.id)}
+				/>
 			{/each}
 
 			<Pagination

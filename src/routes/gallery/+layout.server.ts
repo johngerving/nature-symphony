@@ -1,10 +1,18 @@
 import { getObservations } from '$lib/server/inaturalist';
+import type { Favorite } from '$lib/types/database';
 import type { LayoutServerLoad } from './$types';
 
 const placeID = '1247';
 
-export const load: LayoutServerLoad = async ({ url }) => {
+export const load: LayoutServerLoad = async ({ url, locals: { supabase } }) => {
 	const page = url.searchParams.get('page');
+
+	const { data: favorites } = (await supabase
+		.from('favorites')
+		.select('id')
+		.order('created_at')) as {
+		data: Favorite[];
+	};
 
 	const iNaturalistSearchParams = new URLSearchParams();
 	iNaturalistSearchParams.set('place_id', placeID);
@@ -22,6 +30,7 @@ export const load: LayoutServerLoad = async ({ url }) => {
 	observations.catch(() => {});
 	return {
 		page,
+		favorites: favorites ?? [],
 		streamed: {
 			observations: observations
 		}

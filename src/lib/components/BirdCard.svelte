@@ -1,16 +1,14 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { Observation } from '$lib/types/inaturalist';
+	import MaterialSymbolsStar from '~icons/material-symbols/star';
+	import MaterialSymbolsStarOutline from '~icons/material-symbols/star-outline';
 
-	type Props = {
-		imageUrl: string;
-		commonName: string;
-		latinName: string;
-		imageWidth?: number;
-		imageHeight?: number;
-		onError?: () => void;
-	};
-
-	let { observation }: { observation: Observation } = $props();
+	let {
+		observation,
+		showFavorite = true,
+		favorite = false
+	}: { observation: Observation; showFavorite: boolean; favorite: boolean } = $props();
 	let { photos, taxon } = $derived(observation);
 
 	let hasError = $state(false);
@@ -21,9 +19,28 @@
 </script>
 
 <article class="card" class:error={hasError}>
-	<header>
-		<h2>{taxon?.preferredCommonName}</h2>
-		<p>{taxon?.iconicTaxonName}</p>
+	<header class="flex justify-between">
+		<div>
+			<h2>{taxon?.preferredCommonName}</h2>
+			<p>{taxon?.iconicTaxonName}</p>
+		</div>
+		{#if showFavorite}
+			{#if favorite}
+				<form method="POST" action="/favorites?/unfavorite" use:enhance>
+					<input type="hidden" name="favorite" value={observation.id} />
+					<button type="submit" class="h-fit">
+						<MaterialSymbolsStar class="text-xl" />
+					</button>
+				</form>
+			{:else}
+				<form method="POST" action="/favorites?/favorite" use:enhance>
+					<input type="hidden" name="favorite" value={observation.id} />
+					<button type="submit" class="h-fit">
+						<MaterialSymbolsStarOutline class="text-xl" />
+					</button>
+				</form>
+			{/if}
+		{/if}
 	</header>
 
 	{#if hasError}
