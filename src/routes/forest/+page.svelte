@@ -11,14 +11,17 @@
 
 <style>
   :global(.bird-card) {
-    width: 200px !important;
-    height: 250px !important;
-    transform: scale(0.8);
-    transition: transform 0.2s ease-in-out;
+    width: 100px !important;
+    height: 125px !important;
+    transform: scale(0.7);
+    transition: all 0.3s ease-in-out;
+    opacity: 0.9;
   }
   
   :global(.bird-card:hover) {
-    transform: scale(0.9);
+    transform: scale(0.85);
     z-index: 10;
+    opacity: 1;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 </style> 
