@@ -31,3 +31,17 @@
 		{/if}
 	</div>
 </nav>
+
+
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+</style>
