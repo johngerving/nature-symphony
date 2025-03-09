@@ -13,7 +13,7 @@ export const getObservations = async (
 	const observations: Observation[] = json['results'].map((result) => {
 		const photos: Photo[] = result['photos'].map((photo) => {
 			return {
-				url: photo['url'].replace('square.jpg', 'large.jpg')
+				url: photo['url'].replace('square.jpeg', 'large.jpeg')
 			};
 		});
 		const sounds: Sound[] = result['sounds'].map((sound: Sound) => {
@@ -64,7 +64,7 @@ export const getObservationById = async (id: string) => {
 
 	const photos: Photo[] = result['photos'].map((photo) => {
 		return {
-			url: photo['url'].replace('square.jpg', 'large.jpg')
+			url: photo['url'].replace('square.jpeg', 'large.jpeg')
 		};
 	});
 	const sounds: Sound[] = result['sounds'].map((sound: Sound) => {
