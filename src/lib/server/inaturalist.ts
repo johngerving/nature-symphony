@@ -11,7 +11,7 @@ export const getObservations = async (queryString: string) => {
 	const observations: Observation[] = json['results'].map((result) => {
 		const photos: Photo[] = result['photos'].map((photo) => {
 			return {
-				url: photo['url']
+				url: photo['url'].replace('square.jpg', 'large.jpg')
 			};
 		});
 		const sounds: Sound[] = result['sounds'].map((sound: Sound) => {

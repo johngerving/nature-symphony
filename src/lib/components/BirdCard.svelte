@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { Observation } from '$lib/types/observation';
+
 	type Props = {
 		imageUrl: string;
 		commonName: string;
@@ -8,34 +10,34 @@
 		onError?: () => void;
 	};
 
-	let { imageUrl, commonName, latinName, imageWidth, imageHeight, onError }: Props = $props();
+	let { observation }: { observation: Observation } = $props();
+	let { photos, taxon } = $derived(observation);
 
 	let hasError = $state(false);
 
 	function handleError() {
 		hasError = true;
-		onError?.();
 	}
 </script>
 
 <article class="card" class:error={hasError}>
 	<header>
-		<h2>{commonName}</h2>
-		<p>{latinName}</p>
+		<h2>{taxon?.preferredCommonName}</h2>
+		<p>{taxon?.iconicTaxonName}</p>
 	</header>
 
 	{#if hasError}
 		<div class="error-placeholder">
 			<span>Failed to load image</span>
 		</div>
-	{:else}
+	{:else if photos.length > 0}
 		<img
-			src={imageUrl}
-			alt={commonName}
-			width={imageWidth}
-			height={imageHeight}
+			src={photos[0].url}
+			alt={taxon?.preferredCommonName}
+			width="100%"
+			height="100%"
 			loading="lazy"
-			on:error={handleError}
+			onerror={handleError}
 		/>
 	{/if}
 </article>

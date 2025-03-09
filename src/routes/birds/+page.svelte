@@ -2,29 +2,22 @@
 	import BirdCard from '$lib/components/BirdCard.svelte';
 
 	let { data } = $props();
-
-	const birds = [
-		{
-			imageUrl:
-				'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Male_northern_cardinal_in_Central_Park_%2852612%29.jpg/800px-Male_northern_cardinal_in_Central_Park_%2852612%29.jpg',
-			commonName: 'Northern Cardinal',
-			latinName: 'Cardinalis cardinalis'
-		},
-		{
-			imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg',
-			commonName: 'Indian Peafowl',
-			latinName: 'Pavo cristatus'
-		}
-	];
+	let { observationsPromise } = $derived(data);
 </script>
 
 <div class="container">
 	<h1>Beautiful Birds</h1>
 
 	<div class="card-grid">
-		{#each birds as bird}
-			<BirdCard {...bird} />
-		{/each}
+		{#await observationsPromise}
+			<p>Loading...</p>
+		{:then observations}
+			{#each observations as observation}
+				<BirdCard {observation} />
+			{/each}
+		{:catch error}
+			<p class="text-red-500">{error}</p>
+		{/await}
 	</div>
 </div>
 
