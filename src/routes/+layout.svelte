@@ -18,6 +18,8 @@
 	});
 </script>
 
+<Navbar {user}/>
+
 <header>
 
     <div class="search-bar">
@@ -38,25 +40,7 @@
 
 </main>
 
-
 <style>
-div.absolute {
-	position: absolute;
-	top: 180px;
-	right: 0;
-	width: 200px;
-	height: 100px;
-	border: 3px solid #4a4e44;
-  }
-  header {
-
-position: sticky;
-
-top: -54px; /* value to scroll past the logo so just the search bar is sticky */
-
-z-index: 2;
-
-}
 
 .search-bar {
 
@@ -64,7 +48,7 @@ display: flex;
 
 justify-content: center;
 
-padding: 24px;
+padding: 60px;
 
 }
 
@@ -95,6 +79,6 @@ display: none !important;
 }
 
 </style>
-<Navbar {user}/>
+
 
 {@render children()}
