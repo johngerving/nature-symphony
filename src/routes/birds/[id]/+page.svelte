@@ -1,6 +1,7 @@
 <script lang="ts">
     import * as Card from '$lib/components/ui/card';
     import { Root, Content, Item, Previous, Next } from "$lib/components/ui/carousel/index.js"; 
+    import ResearchArticles from '$lib/components/ResearchArticles.svelte';
 
     export let data;
 
@@ -71,8 +72,10 @@
         <p>placeholder for location</p>
     </div>
     <div class="contentCards">
-        <h1>Digital Commons</h1>
-        <p>research placeholder</p>
+        <ResearchArticles 
+            articles={data.articles} 
+            error={data.articlesError} 
+        />
     </div>
 </div>
 

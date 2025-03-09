@@ -22,16 +22,48 @@ export const load: PageServerLoad = async ({ params }) => {
 	console.log("Server: Observation Data:", observation);
 
 	let articles = [];
+	let articlesError = null;
 
 	try {
-		articles = await getArticlesByKeyword('Parus major');
+		// Get both specific and general search terms
+		const specificName = observation.taxon?.preferredCommonName;
+		const generalType = observation.taxon?.iconicTaxonName?.toLowerCase() || 'bird';
+		
+		console.log("Attempting searches with terms:", {
+			specificName,
+			generalType
+		});
+
+		// Try specific search first
+		if (specificName) {
+			console.log("Trying specific name search:", specificName);
+			articles = await getArticlesByKeyword(specificName);
+			console.log(`Results for '${specificName}':`, articles.length);
+		}
+		
+		// If no specific results, try with general term
+		if (articles.length === 0) {
+			console.log("Trying general type search:", generalType);
+			articles = await getArticlesByKeyword(generalType);
+			console.log(`Results for '${generalType}':`, articles.length);
+		}
+		
+		// If still no results, try with "bird" as fallback
+		if (articles.length === 0 && generalType !== 'bird') {
+			console.log("Trying fallback 'bird' search");
+			articles = await getArticlesByKeyword('bird');
+			console.log("Results for 'bird':", articles.length);
+		}
+
+		console.log("Final articles array:", articles);
 	} catch (e) {
 		console.error('Error fetching articles:', e);
-		// This won't throw a 500 because we don't want the whole page to fail if articles fail.
+		articlesError = 'Failed to fetch research articles';
 	}
 
 	return {
 		observation,
-		articles
+		articles,
+		articlesError
 	};
 };
