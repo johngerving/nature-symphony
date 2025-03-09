@@ -1,50 +1,70 @@
 <script lang="ts">
-    import * as Card from "$lib/components/ui/card";
-  </script>
-
-
-
+	import * as Card from '$lib/components/ui/card';
+    const name = "bird name";
+    const description = "bird description";
+</script>
 
 <!-- stored bird stuff tried em, tried px,  width="400em" height="400em"-->
-<div class="birddiv"> 
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg" class="birdimg">
-    <div><h1> bird name </h1>
-    <p> placeholder for information about bird <br>
-    what they eat <br>
-    information about location
-    </p>
+<div class="landingContent">
+	<img
+		src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Peacock_Plumage.jpg"
+		class="birdimg"
+		alt="bird"
+	/>
+	<div class="landingText">
+		<h1>{name}</h1>
+		<p>{description}</p>
+	</div>
 </div>
+
+<!--soundbytes in this block-->
+<div></div>
+
+<!-- contentCards obs site -->
+<div class="cardList">
+	<div class="contentCards">
+		<h1>iNatural Site</h1>
+		<p>placeholder for the link to the iNatural site</p>
+	</div>
+	<div class="contentCards">
+		<h1>Location</h1>
+		<p>placeholder for location</p>
+	</div>
+	<div class="contentCards">
+		<h1>Digital Commons</h1>
+		<p>research placeholder</p>
+	</div>
 </div>
-    <!--soundbytes in this block-->
-<div> </div>
-    <!-- iNat obs site -->
-<div class="birddiv">
-    <div class="margins">
-    <h1> iNatural Site </h1>
-    <p> placeholder for the link to the iNatural site</p>
-</div>
-<div class="margins">
-    <h1> Location </h1>
-    <p> placeholder for location</p>
-</div>
-<div class="margins">
-    <h1> Digital Commons</h1>
-    <p>research placeholder</p>
-</div>
-</div>
+
 <style>
-    .birddiv {
-    display:flex;
-    flex-direction: row;
-}
-.margins {
-    width: 300px;
-  margin: auto;
-  border: 1px solid rgb(190, 236, 160);
-}
+	.landingContent {
+		display: flex;
+		flex-direction: row;
+	}
+    .landingText {
+        padding: 0px 16px;
+    }
+
+    .cardList {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
     .birdimg {
         width: 300px;
         height: 300px;
-        display: inline; 
+        display: inline;
     }
-  </style> 
+	.contentCards {
+        background: hsl(var(--card) / var(--tw-bg-opacity));
+		width: 300px;
+        margin-right: 16px;
+        padding: 16px;
+		border: 1px solid;
+        border-color: hsl(var(--border) / var(--tw-border-opacity));
+        border-radius: var(--radius);
+	}
+    .contentCards:last-child {
+        margin-right: 0;
+    }
+</style>
