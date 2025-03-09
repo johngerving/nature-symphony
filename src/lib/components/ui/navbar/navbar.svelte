@@ -9,7 +9,8 @@
 	});
 </script>
 
-<nav class="text-primary-background flex items-center justify-between bg-primary-foreground p-4">
+<nav class="navbar text-primary-background flex items-center justify-between bg-primary-foreground p-4">
+	<img src="/Icon_50.png" alt="logo" />
 	<div>
 		<a href="/">Home</a>
         <a href="/gallery">Gallery</a>
@@ -36,7 +37,7 @@
 <style>
     .navbar {
         display: flex;
-        justify-content: space-between;
+		flex-direction: row;
         align-items: center;
     }
     nav a {
