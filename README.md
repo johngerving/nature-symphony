@@ -51,8 +51,14 @@ We have utilized yarn to handle our Node.js implementation for our Svelte 5 base
 In order to set up this project, be sure to have npm or yarn, with Node.js of course, then run
 
 ```bash
-yarn add wrangler
 yarn install
+
+yarn add wrangler
+
+npx wrangler pages project create
+
+yarn run build && npx wrangler pages deploy .svelte-kit/cloudflare/
+
 ```
 Wrangler is for Cloudflare. `yarn install` will install all of the libraries required for this project, stored in the `yarn.lock` file.
 

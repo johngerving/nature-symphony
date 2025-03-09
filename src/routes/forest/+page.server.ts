@@ -17,7 +17,7 @@ const BIRD_POSITIONS = [
   // Top left branch area
   { top: '30%', left: '10%' },
   // Upper right perch
-  { top: '40%', left: '65%' },
+  { top: '40%', left: '55%' },
   // Middle left trunk
   { top: '55%', left: '35%' },
   // Lower right branch

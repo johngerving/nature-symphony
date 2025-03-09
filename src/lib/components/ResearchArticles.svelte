@@ -17,16 +17,18 @@
     {:else if articles.length === 0}
         <p>No research articles found.</p>
     {:else}
-        <div class="articles-list">
-            {#each articles as article}
-                <article class="article-card">
-                    <h3>{article.title}</h3>
-                    {#if article.abstract}
-                        <p class="abstract">{@html article.abstract}</p>
-                    {/if}
-                    <a href={article.url} target="_blank" rel="noopener noreferrer">Read More</a>
-                </article>
-            {/each}
+        <div class="articles-list-container">
+            <div class="articles-list">
+                {#each articles as article}
+                    <article class="article-card">
+                        <h3>{article.title}</h3>
+                        {#if article.abstract}
+                            <p class="abstract">{@html article.abstract}</p>
+                        {/if}
+                        <a href={article.url} target="_blank" rel="noopener noreferrer">Read More</a>
+                    </article>
+                {/each}
+            </div>
         </div>
     {/if}
 </div>
@@ -36,11 +38,38 @@
         width: 100%;
     }
 
+    .articles-list-container {
+        max-height: 70vh;
+        overflow-y: auto;
+        margin-top: 1rem;
+        padding-right: 1rem; /* Add space for scrollbar */
+        
+        /* Add smooth scrolling */
+        scroll-behavior: smooth;
+        
+        /* Style the scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color, #dae4ee) transparent;
+    }
+
+    /* Webkit scrollbar styles */
+    .articles-list-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .articles-list-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .articles-list-container::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color, #0066cc);
+        border-radius: 4px;
+    }
+
     .articles-list {
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        margin-top: 1rem;
     }
 
     .article-card {
